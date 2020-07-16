@@ -1,0 +1,90 @@
+.Auth {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 50px;
+}
+
+.Auth .Form {
+  width: 400px;
+  margin: auto;
+  padding: 24px 40px 32px;
+  background: #fff;
+  border: 1px solid #eee;
+  box-shadow: 2px 2px 4px #ccc, -1px -1px 2px #ccc;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.Auth h1 {
+  font-size: 22px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 8px;
+}
+
+.Auth .FormText {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.54);
+  margin-bottom: 32px;
+}
+
+.Auth .FormText span {
+  font-weight: 600;
+  color: #b022b9;
+}
+
+.Auth .FormText span:hover {
+  cursor: pointer;
+  color: #b94022;
+}
+
+.Auth form {
+  display: flex;
+  flex-direction: column;
+}
+
+.Auth .Agreement {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.48);
+  margin: 25px 0 15px 0;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+.Auth .Agreement span {
+  color: #b022b9;
+  font-weight: 500;
+}
+
+.Auth .Agreement span:hover {
+  color: #b94022;
+  cursor: pointer;
+}
+
+.Auth .Image {
+  height: 100%;
+  width: 40%;
+  margin-left: 20px;
+}
+
+.Auth img {
+  width: 100%;
+  display: block;
+  margin: auto;
+  margin-top: 50px;
+}
+
+@media (max-width: 700px) {
+  .Auth {
+    flex-direction: column;
+  }
+  .Auth .Form {
+    width: 98%;
+  }
+
+  .Auth .Image {
+    display: none;
+  }
+}

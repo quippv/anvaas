@@ -1,0 +1,33 @@
+.Toolbar {
+  width: 80%;
+  height: 60px;
+  padding: 10px 0 10px 10px;
+  padding-right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: #fff;
+  z-index: 99;
+}
+
+.Toolbar .Profile {
+  display: flex;
+}
+
+.Toolbar .Navigation {
+  display: flex;
+}
+
+@media (max-width: 700px) {
+  .Toolbar {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .Toolbar .Navigation label {
+    margin-left: 20px;
+  }
+}

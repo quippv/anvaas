@@ -1,0 +1,53 @@
+.Profile {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.Profile .DropName {
+  display: none;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.Profile .Name,
+.Profile .DropName {
+  font-size: 14px;
+}
+
+.Profile .Name span,
+.Profile .DropName span {
+  font-weight: 600;
+}
+
+.Auth {
+  display: flex;
+  width: 200px;
+  justify-content: space-around;
+}
+
+.Auth div {
+  width: 1px;
+  background: #000;
+}
+
+@media (max-width: 700px) {
+  .Profile .Name {
+    display: none;
+  }
+
+  .Profile .DropName {
+    display: block;
+    position: relative;
+  }
+
+  .Profile .DropName::after {
+    content: "";
+    width: 90%;
+    height: 1px;
+    background: #000;
+    position: absolute;
+    bottom: -5px;
+    left: 5%;
+  }
+}

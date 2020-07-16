@@ -1,0 +1,39 @@
+.HeaderScroll {
+  width: 80%;
+  display: flex;
+  position: fixed;
+  z-index: 10;
+  top: 60px;
+  right: 0;
+  justify-content: space-between;
+  padding: 5px;
+  padding-right: 20px;
+  padding-left: 0;
+  animation: animationHeader 0.5s ease-in forwards;
+}
+
+.HeaderScroll img {
+  width: 25px;
+  height: 25px;
+  background-color: #fff;
+  display: block;
+  border-radius: 50%;
+  border: 1px solid #eee;
+  box-shadow: 1px 1px 0px #ccc;
+}
+
+@media (max-width: 700px) {
+  .HeaderScroll {
+    width: 100%;
+    padding-right: 10px;
+  }
+}
+
+@keyframes animationHeader {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

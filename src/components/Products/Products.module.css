@@ -1,0 +1,25 @@
+.Products {
+  padding: 40px 20px 40px 0px;
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 20px;
+}
+
+@media (max-width: 1240px) {
+  .Products {
+    width: 90%;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .Products {
+    padding: 40px 10px 40px 10px;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+}

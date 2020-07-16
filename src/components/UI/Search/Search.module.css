@@ -1,0 +1,48 @@
+.Search {
+  display: flex;
+  color: #ccc;
+}
+
+.Search input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding-left: 10px;
+}
+
+.Search input::placeholder {
+  color: #ccc;
+}
+
+@media (max-width: 700px) {
+  .Search {
+    color: #000;
+  }
+
+  .Close {
+    width: 0;
+    animation: closeInput 0.5s ease-out forwards;
+  }
+
+  .Open {
+    width: 100%;
+    animation: openInput 0.5s ease-out forwards;
+  }
+}
+
+@keyframes openInput {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes closeInput {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}

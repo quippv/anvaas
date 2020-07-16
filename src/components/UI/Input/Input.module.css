@@ -1,0 +1,37 @@
+.Input {
+  width: 100%;
+  margin-bottom: 7px;
+}
+
+.Input p {
+  text-align: start;
+  font-size: 12px;
+  line-height: 1.33;
+  margin-bottom: 7px;
+  color: rgba(0, 0, 0, 0.48);
+  text-transform: capitalize;
+}
+
+.Input .Placeholder {
+  color: rgba(0, 0, 0, 0.38);
+  text-transform: none;
+}
+
+.InputElement {
+  width: 100%;
+  margin-bottom: 4px;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+}
+
+.InputElement:focus {
+  border: 1px solid #b022b9;
+  outline: none;
+}
+
+.Invalid,
+.Invalid:focus {
+  border-color: #d13127;
+}

@@ -1,0 +1,49 @@
+.Navigation {
+  width: 20%;
+  height: 100vh;
+  padding: 15px 30px;
+  position: fixed;
+  background: #fff;
+}
+
+.Navigation h2 {
+  margin-top: 50px;
+}
+
+@media (max-width: 700px) {
+  .Navigation {
+    position: fixed;
+    width: 60%;
+    height: 100%;
+    z-index: 200;
+    background: #eee;
+  }
+
+  .Open {
+    transform: translateX(0);
+    animation: openSideDrawer 0.5s ease-out forwards;
+  }
+
+  .Close {
+    transform: translateX(-100%);
+    animation: closeSideDrawer 0.5s ease-in forwards;
+  }
+}
+
+@keyframes openSideDrawer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes closeSideDrawer {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

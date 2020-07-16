@@ -1,26 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from "react";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+import LoadingBar from "./components/UI/LoadingBar/LoadingBar";
 
-function App() {
+const Home = React.lazy(() => {
+  return import("./containers/Home/Home");
+});
+
+const Abstract = React.lazy(() => {
+  return import("./containers/Abstract/Abstract");
+});
+
+const Auth = React.lazy(() => {
+  return import("./containers/Auth/Auth");
+});
+
+const SignUp = React.lazy(() => {
+  return import("./containers/Auth/SignUp/SignUp");
+});
+
+const App = () => {
+  const routes = (
+    <Switch>
+      <Route path="/auth" render={(props) => <Auth {...props} />} />
+      <Route path="/register" render={(props) => <SignUp {...props} />} />
+      <Route path="/abstract" render={(props) => <Abstract {...props} />} />
+      <Route path="/" exact render={(props) => <Home {...props} />} />
+      <Redirect to="/" />
+    </Switch>
+  );
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Suspense fallback={<LoadingBar />}>{routes}</Suspense>
     </div>
   );
-}
+};
 
-export default App;
+export default withRouter(App);

@@ -1,0 +1,12 @@
+.HelpCenter {
+  display: flex;
+  position: absolute;
+  bottom: 20px;
+  cursor: pointer;
+}
+
+.HelpCenter p {
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 20px;
+}

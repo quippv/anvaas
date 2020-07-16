@@ -1,0 +1,84 @@
+.Product {
+  width: 225px;
+  height: 300px;
+  background: #fff;
+  box-shadow: 3px 3px 6px #ccc, -1px -1px 2px #ccc;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  justify-self: center;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.Product .Header p {
+  font-size: 12px;
+  color: #bfbfbf;
+}
+
+.Product .Header h6 {
+  font-size: 18px;
+  color: #343434;
+}
+
+.Product img {
+  width: 70%;
+  display: block;
+  margin: auto;
+}
+
+.Product .Footer {
+  display: flex;
+  width: 100%;
+  margin-top: 10px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Price p {
+  font-size: 10px;
+  color: #bfbfbf;
+}
+
+.Price h6 {
+  font-size: 18px;
+  color: #343434;
+}
+
+.Add {
+  width: 30px;
+  height: 30px;
+  background: #b022b9;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 5px;
+  border: 1px solid #eee;
+}
+
+@media (max-width: 700px) {
+  .Product {
+    width: 160px;
+    height: 240px;
+  }
+}
+
+.Product:hover {
+  cursor: pointer;
+  box-shadow: 3px 3px 6px rgb(119, 119, 119), -1px -1px 2px rgb(119, 119, 119);
+}
+
+.Add:hover {
+  cursor: pointer;
+  animation: addAnimation 1s linear infinite;
+}
+
+@keyframes addAnimation {
+  0% {
+    background: #b022b9;
+  }
+  50% {
+    background: #330036;
+  }
+  100% {
+    transform: #ee00ff;
+  }
+}

@@ -1,0 +1,78 @@
+.Header {
+  width: 100%;
+  padding: 5px;
+  padding-right: 20px;
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 60px;
+}
+
+.Header .Title {
+  display: flex;
+  align-items: center;
+}
+
+.Header .Title h2 {
+  font-size: 26px;
+}
+
+.Header .Title img {
+  width: 25px;
+}
+
+.Sort,
+.Filter {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.Sort p {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 0 15px;
+}
+
+.Filter p {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 0 15px;
+}
+
+.Filter .Count {
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  background: #000;
+  border-radius: 50%;
+}
+
+.Filter .Count p {
+  color: #fff;
+  line-height: 18px;
+  font-weight: 600px;
+  text-align: center;
+  padding: 0;
+}
+
+.Sort:hover,
+.Filter:hover,
+.Filter:hover .Count p {
+  color: grey;
+}
+
+.Filter:hover .Count {
+  background: #ccc;
+}
+
+@media (max-width: 700px) {
+  .Header {
+    padding-right: 10px;
+  }
+  .Filter p,
+  .Sort p {
+    padding: 0 5px;
+  }
+}

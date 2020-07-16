@@ -1,0 +1,21 @@
+.NavigationItem {
+  margin-bottom: 20px;
+}
+
+.NavigationItem img {
+  width: 20px;
+  margin-right: 10px;
+}
+
+.NavigationItem .NavLink {
+  text-decoration: none;
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.NavigationItem a.Active {
+  color: #b022b9;
+}

@@ -1,0 +1,9 @@
+.Card {
+  border-radius: 5px;
+  border: 1px solid #eee;
+  box-shadow: 1px 1px 0px #ccc;
+}
+
+.Card:hover {
+  cursor: pointer;
+}
