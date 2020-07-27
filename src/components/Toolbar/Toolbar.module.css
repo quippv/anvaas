@@ -15,6 +15,7 @@
 
 .Toolbar .Profile {
   display: flex;
+  align-items: center;
 }
 
 .Toolbar .Navigation {
