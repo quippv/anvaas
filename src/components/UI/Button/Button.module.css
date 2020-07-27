@@ -49,6 +49,12 @@
   padding: 8px 15px;
 }
 
+.SignIn:disabled,
+.SignUp:disabled {
+  pointer-events: none;
+  background: #747474 radial-gradient(circle, transparent 1%, #747474 1%);
+}
+
 .SignUp {
   background: #000;
   color: #fff;

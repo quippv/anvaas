@@ -1,0 +1,43 @@
+.SellArtHeader {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.SellArt {
+  width: 30%;
+  margin: auto;
+  padding: 20px 20px 0 20px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 3px #ccc, -1px -1px 0 #ccc;
+  border: 1px solid #eee;
+  border-radius: 5px;
+}
+
+.SellArt h1 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600px;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.SellArt .Detail {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.48);
+  margin-bottom: 30px;
+}
+
+@media (max-width: 1244px) {
+  .SellArt {
+    width: 40%;
+  }
+}
+
+@media (max-width: 700px) {
+  .SellArt {
+    width: 90%;
+  }
+}

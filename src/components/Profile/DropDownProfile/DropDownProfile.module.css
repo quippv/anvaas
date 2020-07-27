@@ -1,0 +1,30 @@
+.DropDownProfile {
+  display: flex;
+  flex-direction: column;
+}
+
+.DropDownProfile a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.48);
+  font-size: 14px;
+  padding: 10px 16px;
+}
+
+.DropDownProfile a:hover {
+  background-color: rgba(0, 0, 0, 0.48);
+  color: #fff;
+  border-radius: 8px;
+}
+
+.DropDownProfile a:hover .Fill {
+  fill: #fff;
+}
+
+.DropDownProfile a:nth-child(4) {
+  display: flex;
+  align-items: center;
+}
+
+.DropDownProfile a.active {
+  color: rgba(0, 0, 0, 0.88);
+}

@@ -3,7 +3,7 @@
   height: 50vh;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
-  grid-template-rows: minmax(50px, auto);
+  grid-template-rows: minmax(auto, auto);
   grid-auto-flow: dense;
   grid-gap: 10px;
   padding: 20px 20px 10px 0;
@@ -60,16 +60,24 @@
 
 .Carousel .Box:nth-child(4) {
   grid-column: span 2;
+  grid-row: span 1;
 }
 
 @media (max-width: 1024px) {
   .Carousel {
-    grid-template-columns: repeat(auto-fill, minmax(50%, 1fr));
-    grid-template-rows: minmax(auto, auto);
+    grid-template-columns: repeat(2, minmax(50%, 1fr));
+    grid-template-rows: repeat(4, 100px);
     padding: 20px 10px 10px 10px;
+    margin-bottom: 100px;
   }
   .Carousel .Box {
     grid-column: unset;
     grid-row: unset;
+  }
+}
+
+@media (max-width: 700px) {
+  .Carousel {
+    margin-bottom: 30px;
   }
 }

@@ -1,8 +1,7 @@
-import React from "react";
-import Layout from "../../hoc/Layout/Layout";
-import Header from "../../components/Header/Header";
-import classes from "./Abstract.module.css";
-import Products from "../../components/Products/Products";
+import React, { useState } from "react";
+import Layout from "../../../hoc/Layout/Layout";
+import Header from "../../../components/Header/Header";
+import Products from "../../../components/Products/Products";
 
 const Abstract = (props) => {
   const signInHandler = () => {
@@ -17,6 +16,12 @@ const Abstract = (props) => {
     props.history.push("/");
   };
 
+  const [price, setPrice] = useState("Low");
+
+  const sortPriceHandler = () => {
+    price === "Low" ? setPrice("High") : setPrice("Low");
+  };
+
   return (
     <Layout
       signIn={signInHandler}
@@ -26,9 +31,11 @@ const Abstract = (props) => {
       <Header
         title="Abstract"
         icon="https://img.icons8.com/color/48/000000/opacity.png"
+        sortPrice={sortPriceHandler}
+        price={price}
       />
-      <main className={classes.Abstract}>
-        <Products />
+      <main>
+        <Products category="abstract" sortPrice={price} />
       </main>
     </Layout>
   );

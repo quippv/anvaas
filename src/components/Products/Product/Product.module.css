@@ -20,8 +20,21 @@
   color: #343434;
 }
 
+.Product .Image {
+  width: 75%;
+  height: 180px;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: #fff;
+}
+
 .Product img {
-  width: 70%;
+  width: 100%;
   display: block;
   margin: auto;
 }
@@ -49,9 +62,35 @@
   height: 30px;
   background: #b022b9;
   text-align: center;
-  line-height: 30px;
   border-radius: 5px;
   border: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.Add:active:enabled {
+  transform: scale(1.2);
+}
+
+.Add:disabled {
+  background-color: rgba(0, 0, 0, 0.58);
+}
+
+.FavoriteBorder {
+  width: 30px;
+  height: 30px;
+  background: #eee;
+  text-align: center;
+  border-radius: 5px;
+  border: 2px solid #b022b9;
+  margin-right: 5px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
 }
 
 @media (max-width: 700px) {
@@ -59,26 +98,41 @@
     width: 160px;
     height: 240px;
   }
+
+  .Product .Image {
+    height: 120px;
+  }
 }
 
-.Product:hover {
+.Product:hover:enabled {
   cursor: pointer;
   box-shadow: 3px 3px 6px rgb(119, 119, 119), -1px -1px 2px rgb(119, 119, 119);
 }
 
-.Add:hover {
+.Add:hover:enabled {
   cursor: pointer;
   animation: addAnimation 1s linear infinite;
+}
+
+.FavoriteBorder:hover:enabled {
+  cursor: pointer;
+  animation: favBorderAnimation 1s linear infinite;
 }
 
 @keyframes addAnimation {
   0% {
     background: #b022b9;
   }
-  50% {
+  100% {
     background: #330036;
   }
+}
+
+@keyframes favBorderAnimation {
+  0% {
+    background: #eee;
+  }
   100% {
-    transform: #ee00ff;
+    background: #ccc;
   }
 }

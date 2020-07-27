@@ -9,7 +9,7 @@ const Header = (props) => {
 
   useEffect(() => {
     document.addEventListener("scroll", () => {
-      const scroll = window.scrollY > 30;
+      const scroll = window.scrollY > 150;
       if (scroll !== isScroll) {
         setIsScroll(scroll);
       }
@@ -33,17 +33,9 @@ const Header = (props) => {
         }}
       >
         <Card marginLeft="10px" backgroundColor="#fff">
-          <div className={classes.Sort}>
+          <div className={classes.Sort} onClick={props.sortPrice}>
             <Sort style={{ fontSize: 18, transform: "scale(-1, 1)" }} />
-            <p>Sort</p>
-          </div>
-        </Card>
-        <Card marginLeft="10px" backgroundColor="#fff">
-          <div className={classes.Filter}>
-            <div className={classes.Count}>
-              <p>0</p>
-            </div>
-            <p>Filter</p>
+            <p>Sort by {props.price} Price</p>
           </div>
         </Card>
       </div>

@@ -3,11 +3,55 @@
   color: #ccc;
 }
 
+.Result {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.SearchResult {
+  position: absolute;
+  top: 30px;
+  left: 20px;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 2px 2px 3px #ccc;
+  padding: 10px;
+  list-style: none;
+}
+
+.SearchResult li {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #ccc;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.SearchResult li .Link {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.68);
+}
+
+.SearchResult li:hover {
+  cursor: pointer;
+  background: #eee;
+}
+
+.Search form {
+  display: flex;
+  align-items: center;
+}
+
 .Search input {
   border: none;
   outline: none;
   font-size: 14px;
   padding-left: 10px;
+  width: 450px;
 }
 
 .Search input::placeholder {
@@ -27,6 +71,14 @@
   .Open {
     width: 100%;
     animation: openInput 0.5s ease-out forwards;
+  }
+
+  .OpenResult {
+    width: 100%;
+  }
+
+  .CloseResult {
+    display: none;
   }
 }
 

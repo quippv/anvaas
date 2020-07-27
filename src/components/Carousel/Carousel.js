@@ -9,16 +9,28 @@ const Carousel = (props) => {
   return (
     <div className={classes.Carousel}>
       <div className={classes.Box}>
-        <img className={classes.Image} src={discountImage} alt="Discount" />
+        <div
+          className={classes.Image}
+          style={{ backgroundImage: `url(${discountImage})` }}
+        />
       </div>
       <div className={classes.Box}>
-        <img className={classes.Image} src={paint1} alt="Discount" />
+        <div
+          className={classes.Image}
+          style={{ backgroundImage: `url(${paint1})` }}
+        />
       </div>
       <div className={classes.Box}>
-        <img className={classes.Image} src={paint2} alt="Discount" />
+        <div
+          className={classes.Image}
+          style={{ backgroundImage: `url(${paint2})` }}
+        />
       </div>
       <div className={classes.Box}>
-        <img className={classes.Image} src={paint3} alt="Discount" />
+        <div
+          className={classes.Image}
+          style={{ backgroundImage: `url(${paint3})` }}
+        />
       </div>
     </div>
   );

@@ -76,6 +76,12 @@
   margin-top: 50px;
 }
 
+.Auth .ErrorMessage {
+  color: #b94022;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
 @media (max-width: 700px) {
   .Auth {
     flex-direction: column;

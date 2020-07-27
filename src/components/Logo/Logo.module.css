@@ -1,4 +1,11 @@
 .Logo {
   width: 80px;
   margin-top: 10px;
+  margin-right: 45px;
+}
+
+@media (max-width: 700px) {
+  .Logo {
+    margin-right: 5px;
+  }
 }

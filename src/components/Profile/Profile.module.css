@@ -6,13 +6,13 @@
 
 .Profile .DropName {
   display: none;
-  text-align: center;
-  margin-bottom: 15px;
+  padding: 10px 16px;
 }
 
 .Profile .Name,
 .Profile .DropName {
   font-size: 14px;
+  text-transform: capitalize;
 }
 
 .Profile .Name span,
@@ -31,6 +31,18 @@
   background: #000;
 }
 
+.Auth a {
+  text-decoration: none;
+}
+
+.Auth .ProfileLink {
+  color: #000;
+}
+
+.Auth .Logout {
+  color: #fff;
+}
+
 @media (max-width: 700px) {
   .Profile .Name {
     display: none;
@@ -39,15 +51,5 @@
   .Profile .DropName {
     display: block;
     position: relative;
-  }
-
-  .Profile .DropName::after {
-    content: "";
-    width: 90%;
-    height: 1px;
-    background: #000;
-    position: absolute;
-    bottom: -5px;
-    left: 5%;
   }
 }

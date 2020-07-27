@@ -1,0 +1,15 @@
+.ContactData {
+  width: 30%;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.ContactData h3 {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 700px) {
+  .ContactData {
+    width: 90%;
+  }
+}

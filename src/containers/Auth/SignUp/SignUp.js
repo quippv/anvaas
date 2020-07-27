@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 
 import Input from "../../../components/UI/Input/Input";
 import classes from "../Auth.module.css";
@@ -6,25 +7,13 @@ import signUpImage from "../../../assets/images/signup.png";
 import Logo from "../../../components/Logo/Logo";
 import Button from "../../../components/UI/Button/Button";
 import { updateObject, checkValidation } from "../../../shared/utility";
+import * as actions from "../../../store/actions/index";
+import Spinner from "../../../components/UI/Spinner/Spinner";
 
 const SignUp = (props) => {
   const [form, setForm] = useState({
-    username: {
-      elementType: "input",
-      elementConfig: {
-        type: "text",
-      },
-      value: "",
-      validation: {
-        required: true,
-        minLength: 6,
-      },
-      valid: false,
-      touched: false,
-      placeholder: "Username at least 6 characters",
-      validText: "Username is less than 6 characters",
-    },
     email: {
+      name: "Email",
       elementType: "input",
       elementConfig: {
         type: "email",
@@ -40,43 +29,48 @@ const SignUp = (props) => {
       validText: "Incorrect email format",
     },
     password: {
-      elementType: "input",
+      name: "Password",
+      elementType: "password",
       elementConfig: {
         type: "password",
+        autoComplete: "on",
       },
       value: "",
       validation: {
         required: true,
-        minLength: 6,
+        isPassword: true,
       },
       valid: false,
       touched: false,
-      placeholder: "Password at least 6 characters",
-      validText: "Password is less than 6 characters",
+      placeholder:
+        "Contain at least 8 characters, 1 number, 1 lowercase & uppercase character (A-Z)",
+      validText:
+        "Contain at least 8 characters, 1 number, 1 lowercase & uppercase character (A-Z)",
+      visibility: false,
+    },
+    confirmPassword: {
+      name: "Confirm Password",
+      elementType: "password",
+      elementConfig: {
+        type: "password",
+        autoComplete: "on",
+      },
+      value: "",
+      validation: {
+        required: true,
+      },
+      valid: false,
+      touched: false,
+      placeholder: "Re-type yout password",
+      validText: "Your password must be the same",
+      visibility: false,
     },
   });
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    setForm(
-      updateObject(form, {
-        username: updateObject(form.username, {
-          value: "",
-          valid: false,
-          touched: false,
-        }),
-        email: updateObject(form.email, {
-          value: "",
-          valid: false,
-          touched: false,
-        }),
-        password: updateObject(form.password, {
-          value: "",
-          valid: false,
-          touched: false,
-        }),
-      })
-    );
+    props.onAuth(form.email.value, form.password.value, true);
+    props.onSetAuthRedirectPath("/personal-data");
   };
 
   const inputChangeHandler = (event, id) => {
@@ -84,7 +78,10 @@ const SignUp = (props) => {
       updateObject(form, {
         [id]: updateObject(form[id], {
           value: event.target.value,
-          valid: checkValidation(event.target.value, form[id].validation),
+          valid:
+            id === "confirmPassword"
+              ? form.password.value === event.target.value
+              : checkValidation(event.target.value, form[id].validation),
           touched: true,
         }),
       })
@@ -95,17 +92,17 @@ const SignUp = (props) => {
   const switchHandler = () => {
     setForm(
       updateObject(form, {
-        username: updateObject(form.username, {
-          value: "",
-          valid: false,
-          touched: false,
-        }),
         email: updateObject(form.email, {
           value: "",
           valid: false,
           touched: false,
         }),
         password: updateObject(form.password, {
+          value: "",
+          valid: false,
+          touched: false,
+        }),
+        confirmPassword: updateObject(form.confirmPassword, {
           value: "",
           valid: false,
           touched: false,
@@ -117,6 +114,19 @@ const SignUp = (props) => {
 
   const gotoHomeHandler = () => {
     props.history.push("/");
+  };
+
+  const visibilityPasswordHandler = (event, id) => {
+    setForm(
+      updateObject(form, {
+        [id]: updateObject(form[id], {
+          visibility: !form[id].visibility,
+          elementConfig: updateObject(form[id].elementConfig, {
+            type: !form[id].visibility ? "text" : "password",
+          }),
+        }),
+      })
+    );
   };
 
   // Array for form
@@ -144,31 +154,44 @@ const SignUp = (props) => {
             <span onClick={switchHandler}>Sign In</span>
           </p>
           <form onSubmit={onSubmitHandler}>
-            {formElements.map((element) => (
-              <Input
-                key={element.id}
-                label={element.id}
-                elementType={element.config.elementType}
-                elementConfig={element.config.elementConfig}
-                value={element.config.value}
-                invalid={!element.config.valid}
-                invalidText={element.config.validText}
-                shouldValidate={element.config.validation}
-                isTouched={element.config.touched}
-                placeholder={element.config.placeholder}
-                changed={(event) => inputChangeHandler(event, element.id)}
-              />
-            ))}
+            {props.loading ? (
+              <Spinner />
+            ) : (
+              formElements.map((element) => (
+                <Input
+                  key={element.id}
+                  label={element.config.name}
+                  elementType={element.config.elementType}
+                  elementConfig={element.config.elementConfig}
+                  value={element.config.value}
+                  invalid={!element.config.valid}
+                  invalidText={element.config.validText}
+                  shouldValidate={element.config.validation}
+                  isTouched={element.config.touched}
+                  placeholder={element.config.placeholder}
+                  changed={(event) => inputChangeHandler(event, element.id)}
+                  visibility={element.config.visibility}
+                  visibilityClicked={(event) =>
+                    visibilityPasswordHandler(event, element.id)
+                  }
+                />
+              ))
+            )}
+            {props.error && (
+              <p className={classes.ErrorMessage}>{props.error.message}</p>
+            )}
             <Button
               btnType="Success"
               style={{ fontSize: 14, fontWeight: 600, lineHeight: "32px" }}
               disabled={
-                form.username.valid && form.email.valid && form.password.valid
+                form.email.valid &&
+                form.password.valid &&
+                form.confirmPassword.valid
                   ? false
                   : true
               }
             >
-              Register
+              Continue
             </Button>
           </form>
           <div className={classes.Agreement}>
@@ -186,4 +209,21 @@ const SignUp = (props) => {
   );
 };
 
-export default SignUp;
+const mapStateToProps = (state) => {
+  return {
+    isAuthenticated: state.auth.token !== null,
+    error: state.auth.error,
+    loading: state.auth.loading,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAuth: (email, password, isSignUp) =>
+      dispatch(actions.auth(email, password, isSignUp)),
+    onSetAuthRedirectPath: (path) =>
+      dispatch(actions.setAuthRedirectPath(path)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

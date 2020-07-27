@@ -13,7 +13,7 @@ const Navigation = (props) => {
 
   return (
     <React.Fragment>
-      {props.open && <Backdrop closed={props.closed} />}
+      <Backdrop show={props.open} closed={props.closed} />
       <nav className={classNames.join(" ")}>
         <Logo style={{ cursor: "pointer" }} clicked={props.gotoHandler} />
         <h2>Explore</h2>

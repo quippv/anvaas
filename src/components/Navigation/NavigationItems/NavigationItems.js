@@ -52,6 +52,7 @@ const NavigationItems = (props) => {
     <ul className={classes.NavigationItems}>
       {categories.map((category) => (
         <NavigationItem
+          key={category.name}
           name={category.name}
           icon={category.icon}
           link={category.link}

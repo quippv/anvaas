@@ -1,0 +1,22 @@
+.Cart {
+  margin: auto;
+  margin-top: 73px;
+  width: 60%;
+  padding: 20px;
+  border: 1px solid #eee;
+  box-shadow: 2px 2px 2px #ccc, -1px -1px 0 #ccc;
+  border-radius: 5px;
+  margin-bottom: 30px;
+}
+
+.AddCart {
+  text-align: center;
+}
+
+@media (max-width: 700px) {
+  .Cart {
+    width: 90%;
+    margin-top: 83px;
+    padding: 10px;
+  }
+}

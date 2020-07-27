@@ -1,0 +1,60 @@
+.Portfolio {
+  width: 80%;
+  margin: 30px auto;
+}
+
+.Portfolio h1 {
+  margin-bottom: 15px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.Portfolio p {
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.Row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  box-shadow: 2px 2px 3px #ccc;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.Left {
+  display: flex;
+  align-items: center;
+  width: 60%;
+}
+
+.Image {
+  width: 100px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Image img {
+  width: 80%;
+}
+
+.Left h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.Left h5 {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.Left p {
+  font-size: 16px;
+  font-weight: 400;
+}

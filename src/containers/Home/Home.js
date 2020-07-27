@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../../hoc/Layout/Layout";
 import Header from "../../components/Header/Header";
 import Carousel from "../../components/Carousel/Carousel";
 import classes from "./Home.module.css";
 import Products from "../../components/Products/Products";
+import axios from "../../axios-db";
+import withErrorHandler from "../../hoc/withErrorHandler/withErrorHandler";
 
 const Home = (props) => {
   const signInHandler = () => {
@@ -18,6 +20,12 @@ const Home = (props) => {
     props.history.push("/");
   };
 
+  const [price, setPrice] = useState("Low");
+
+  const sortPriceHandler = () => {
+    price === "Low" ? setPrice("High") : setPrice("Low");
+  };
+
   return (
     <Layout
       signIn={signInHandler}
@@ -27,13 +35,15 @@ const Home = (props) => {
       <Header
         title="New In"
         icon="https://img.icons8.com/fluent/48/000000/lightning-bolt.png"
+        sortPrice={sortPriceHandler}
+        price={price}
       />
       <main className={classes.Home}>
         <Carousel />
-        <Products />
+        <Products sortPrice={price} />
       </main>
     </Layout>
   );
 };
 
-export default Home;
+export default withErrorHandler(Home, axios);

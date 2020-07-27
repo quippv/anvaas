@@ -1,0 +1,82 @@
+.Setting {
+  width: 600px;
+  margin: auto;
+  margin-top: 153px;
+  border-radius: 15px;
+  border: 1px solid #eee;
+  box-shadow: 2px 2px 4px #ccc, -1px -1px 0 #ccc;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.SettingLeft {
+  width: 40%;
+}
+
+.SettingLeft img {
+  width: 200px;
+  height: 200px;
+  display: block;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px #eee;
+  margin-bottom: 7px;
+}
+
+.SettingRight {
+  width: 50%;
+}
+
+.Row {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.Row h4 {
+  width: 40%;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.38);
+}
+
+.Row h3 {
+  width: 60%;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.78);
+}
+
+.SettingRight p {
+  font-size: 12px;
+}
+
+.SettingRight p a {
+  text-decoration: none;
+}
+
+.SettingRight p a:hover {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+@media (max-width: 800px) {
+  .Setting {
+    flex-direction: column;
+    margin-top: 83px;
+    width: 70%;
+  }
+
+  .SettingLeft img {
+    width: 230px;
+    height: 230px;
+  }
+
+  .SettingLeft {
+    width: 100%;
+  }
+
+  .SettingRight {
+    width: 100%;
+    margin-top: 20px;
+  }
+}

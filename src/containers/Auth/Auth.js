@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import { Redirect } from "react-router";
 
 import Input from "../../components/UI/Input/Input";
 import classes from "./Auth.module.css";
@@ -6,6 +8,9 @@ import signInImage from "../../assets/images/signin.png";
 import Logo from "../../components/Logo/Logo";
 import Button from "../../components/UI/Button/Button";
 import { updateObject, checkValidation } from "../../shared/utility";
+import * as actions from "../../store/actions/index";
+
+import Spinner from "../../components/UI/Spinner/Spinner";
 
 const Auth = (props) => {
   const [form, setForm] = useState({
@@ -25,38 +30,29 @@ const Auth = (props) => {
       validText: "Incorrect email format",
     },
     password: {
-      elementType: "input",
+      elementType: "password",
       elementConfig: {
         type: "password",
+        autoComplete: "on",
       },
       value: "",
       validation: {
         required: true,
-        minLength: 6,
+        isPassword: true,
       },
       valid: false,
       touched: false,
-      placeholder: "Password at least 6 characters",
-      validText: "Password is less than 6 characters",
+      placeholder:
+        "Contain at least 8 characters, 1 number, 1 lowercase & uppercase character (A-Z)",
+      validText:
+        "Contain at least 8 characters, 1 number, 1 lowercase & uppercase character (A-Z)",
+      visibility: false,
     },
   });
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
-    setForm(
-      updateObject(form, {
-        email: updateObject(form.email, {
-          value: "",
-          valid: false,
-          touched: false,
-        }),
-        password: updateObject(form.password, {
-          value: "",
-          valid: false,
-          touched: false,
-        }),
-      })
-    );
+    props.onAuth(form.email.value, form.password.value, false);
   };
 
   const inputChangeHandler = (event, id) => {
@@ -94,6 +90,19 @@ const Auth = (props) => {
     props.history.push("/");
   };
 
+  const visibilityPasswordHandler = () => {
+    setForm(
+      updateObject(form, {
+        password: updateObject(form.password, {
+          visibility: !form.password.visibility,
+          elementConfig: updateObject(form.password.elementConfig, {
+            type: !form.password.visibility ? "text" : "password",
+          }),
+        }),
+      })
+    );
+  };
+
   // Array for form
   const formElements = [];
   for (const key in form) {
@@ -119,21 +128,30 @@ const Auth = (props) => {
             <span onClick={switchHandler}>Register</span>
           </p>
           <form onSubmit={onSubmitHandler}>
-            {formElements.map((element) => (
-              <Input
-                key={element.id}
-                label={element.id}
-                elementType={element.config.elementType}
-                elementConfig={element.config.elementConfig}
-                value={element.config.value}
-                invalid={!element.config.valid}
-                invalidText={element.config.validText}
-                shouldValidate={element.config.validation}
-                isTouched={element.config.touched}
-                placeholder={element.config.placeholder}
-                changed={(event) => inputChangeHandler(event, element.id)}
-              />
-            ))}
+            {props.loading ? (
+              <Spinner />
+            ) : (
+              formElements.map((element) => (
+                <Input
+                  key={element.id}
+                  label={element.id}
+                  elementType={element.config.elementType}
+                  elementConfig={element.config.elementConfig}
+                  value={element.config.value}
+                  invalid={!element.config.valid}
+                  invalidText={element.config.validText}
+                  shouldValidate={element.config.validation}
+                  isTouched={element.config.touched}
+                  placeholder={element.config.placeholder}
+                  changed={(event) => inputChangeHandler(event, element.id)}
+                  visibility={element.config.visibility}
+                  visibilityClicked={visibilityPasswordHandler}
+                />
+              ))
+            )}
+            {props.error && (
+              <p className={classes.ErrorMessage}>{props.error.message}</p>
+            )}
             <Button
               btnType="Danger"
               style={{ fontSize: 14, fontWeight: 600, lineHeight: "32px" }}
@@ -141,6 +159,7 @@ const Auth = (props) => {
             >
               Sign in
             </Button>
+            {props.isAuthenticated && <Redirect to="/" />}
           </form>
         </div>
         <div className={classes.Image}>
@@ -151,4 +170,19 @@ const Auth = (props) => {
   );
 };
 
-export default Auth;
+const mapStateToProps = (state) => {
+  return {
+    loading: state.auth.loading,
+    error: state.auth.error,
+    isAuthenticated: state.auth.token !== null,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onAuth: (email, password, isSignUp) =>
+      dispatch(actions.auth(email, password, isSignUp)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Auth);

@@ -1,0 +1,76 @@
+.Purchase {
+  margin: 70px auto;
+  width: 80%;
+}
+
+.Purchase h1 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.Row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  box-shadow: 2px 2px 3px #ccc;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.Left {
+  display: flex;
+  align-items: center;
+  width: 60%;
+}
+
+.Image {
+  width: 100px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Image img {
+  width: 80%;
+}
+
+.Left h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.Left h5 {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.Left p {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.Right {
+  width: 40%;
+}
+
+.Right h6 {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.Right p {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+@media (max-width: 700px) {
+  .Purchase {
+    width: 90%;
+  }
+}

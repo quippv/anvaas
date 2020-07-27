@@ -19,6 +19,16 @@
 
 .Toolbar .Navigation {
   display: flex;
+  align-items: center;
+}
+
+.Toolbar .Profile a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.98);
+}
+
+.Toolbar .Profile a.active {
+  color: #b022b9;
 }
 
 @media (max-width: 700px) {
@@ -29,5 +39,6 @@
 
   .Toolbar .Navigation label {
     margin-left: 20px;
+    margin-right: 10px;
   }
 }
