@@ -57,6 +57,7 @@ const Wishlist = (props) => {
         ) : wishlists.length > 0 ? (
           wishlists.map((wishlist) => (
             <Carts
+              id={wishlist.id}
               key={wishlist.idWishlist}
               title={wishlist.title}
               artist={wishlist.artist}
